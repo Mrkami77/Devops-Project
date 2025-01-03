@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devops-frontend
+  template:
+    metadata:
+      labels:
+        app: devops-frontend
+    spec:
+      containers:
+      - name: devops-frontend
+        image: mrkami777/devops-frontend:latest
+        ports:
+        - containerPort: 3000
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devops-backend
+  template:
+    metadata:
+      labels:
+        app: devops-backend
+    spec:
+      containers:
+      - name: devops-backend
+        image: mrkami777/devops-backend:latest
+        ports:
+        - containerPort: 5000
